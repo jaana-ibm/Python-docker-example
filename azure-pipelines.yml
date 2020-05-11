@@ -20,6 +20,12 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+    - task: oc-cmd@2
+      inputs:
+        connectionType: 'OpenShift Connection Service'
+        openshiftService: 'My OpenShift'
+        version: '4.2'
+        cmd: 'oc start-build python-ex --follow'
     - task: Docker@2
       displayName: Build an image
       inputs:
